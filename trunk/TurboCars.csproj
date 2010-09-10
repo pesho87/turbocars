@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+	<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+	<ProductVersion>9.0.21022</ProductVersion>
+	<SchemaVersion>2.0</SchemaVersion>
+	<ProjectGuid>{F92DE29C-E9AF-BC94-BC53-3A136E07A785}</ProjectGuid>
+	<OutputType>Library</OutputType>
+	<AppDesignerFolder>Properties</AppDesignerFolder>
+	<RootNamespace>Irrelevant</RootNamespace>
+	<AssemblyName>Irrelvant</AssemblyName>
+	<TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+	<FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+	<DebugSymbols>true</DebugSymbols>
+	<DebugType>full</DebugType>
+	<Optimize>false</Optimize>
+	<OutputPath>Temp\bin\Debug\</OutputPath>
+	<DefineConstants>DEBUG;TRACE</DefineConstants>
+	<ErrorReport>prompt</ErrorReport>
+	<WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+	<DebugType>pdbonly</DebugType>
+	<Optimize>true</Optimize>
+	<OutputPath>Temp\bin\Release\</OutputPath>
+	<DefineConstants>TRACE</DefineConstants>
+	<ErrorReport>prompt</ErrorReport>
+	<WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+	<Reference Include="System" />
+    <Reference Include="System.XML" />
+	<Reference Include="System.Core" />
+	<Reference Include="UnityEngine">
+	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/lib/UnityEngine-Debug.dll</HintPath>
+	</Reference>
+	<Reference Include="UnityEditor">
+	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/lib/UnityEditor.dll</HintPath>
+	</Reference>
+  </ItemGroup>
+  <ItemGroup>
+     <Compile Include="Assets\Assets\Standard Assets\Scripts\CombineChildren.cs" />
+     <Compile Include="Assets\Assets\Standard Assets\Scripts\MeshCombineUtility.cs" />
+     <Compile Include="Assets\Standard Assets\Camera Scripts\MouseLook.cs" />
+     <Compile Include="Assets\Standard Assets\Scripts\ActivateTrigger.cs" />
+     <Compile Include="Assets\Standard Assets\Scripts\CombineChildren.cs" />
+     <Compile Include="Assets\Standard Assets\Scripts\MeshCombineUtility.cs" />
+     <Compile Include="Assets\Standard Assets\Water\Sources\WaterSimple.cs" />
+     <None Include="Assets\Assets\Shaders\Particle Add (Overlay).shader" />
+     <None Include="Assets\Standard Assets\Blob-Shadow\ShadowProjection.shader" />
+     <None Include="Assets\Standard Assets\Water\Sources\FX-Water Simple.shader" />
+     <None Include="Assets\Assets\lineColor.js" />
+     <None Include="Assets\Assets\Editor\TwoDHelper.js" />
+     <None Include="Assets\Assets\Scripts\2D\DeathTrigger.js" />
+     <None Include="Assets\Assets\Scripts\2D\LevelAttributes.js" />
+     <None Include="Assets\Assets\Scripts\2D\PlatformTarget.js" />
+     <None Include="Assets\Assets\Scripts\2D\SpawnPoint.js" />
+     <None Include="Assets\Assets\Scripts\2D\Character Controls\PlatformerController.js" />
+     <None Include="Assets\Assets\Scripts\2D\Character Controls\PlatformerPlayerAnimation.js" />
+     <None Include="Assets\Assets\Scripts\2D\Character Controls\PlatformerPushBodies.js" />
+     <None Include="Assets\Assets\Scripts\2D\Moving Platform\MovingPlatformEffects.js" />
+     <None Include="Assets\Assets\Scripts\2D\Moving Platform\PlatformMover.js" />
+     <None Include="Assets\Assets\Scripts\2D\Spaceship\Spaceship.js" />
+     <None Include="Assets\Assets\Scripts\Effects\CollisionParticleEffect.js" />
+     <None Include="Assets\Assets\Scripts\Effects\CollisionSoundEffect.js" />
+     <None Include="Assets\Assets\Scripts\Effects\Foot.js" />
+     <None Include="Assets\Assets\Scripts\Effects\SpecialEffectHandler.js" />
+     <None Include="Assets\Assets\Scripts\Effects\StopEmittingAfterDelay.js" />
+     <None Include="Assets\Standard Assets\Camera Scripts\MouseOrbit.js" />
+     <None Include="Assets\Standard Assets\Camera Scripts\SmoothFollow.js" />
+     <None Include="Assets\Standard Assets\Camera Scripts\SmoothLookAt.js" />
+     <None Include="Assets\Standard Assets\Camera Scripts\Camera\CameraFocus.js" />
+     <None Include="Assets\Standard Assets\Camera Scripts\Camera\CameraScrolling.js" />
+     <None Include="Assets\Standard Assets\Camera Scripts\Camera\CameraTargetAttributes.js" />
+     <None Include="Assets\Standard Assets\Scripts\DragRigidbody.js" />
+     <None Include="Assets\Standard Assets\Scripts\Driving.js" />
+     <None Include="Assets\Standard Assets\Scripts\FPSWalker.js" />
+     <None Include="Assets\Standard Assets\Scripts\TimedObjectDestructor.js" />
+     <None Include="Assets\Standard Assets\Scripts\Effects\CollisionParticleEffect.js" />
+     <None Include="Assets\Standard Assets\Scripts\Effects\CollisionSoundEffect.js" />
+     <None Include="Assets\Standard Assets\Scripts\Effects\Foot.js" />
+     <None Include="Assets\Standard Assets\Scripts\Effects\SpecialEffectHandler.js" />
+     <None Include="Assets\Standard Assets\Scripts\Effects\StopEmittingAfterDelay.js" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+	   Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
+	
