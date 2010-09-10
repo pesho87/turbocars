@@ -77,7 +77,7 @@ function GearSound()
 			tempMaxSpeed=gearSpeed[currentGear];
 			break;
 	}
-	currentPitch=(((currentSpeed-tempMin)/(tempMaxSpeed-tempMinSpeed))+1);
+	currentPitch=(((currentSpeed-tempMinSpeed)/(tempMaxSpeed-tempMinSpeed))+1);
 	audio.pitch = currentSpeed/maxSpeed+1;
 }
 function FixedUpdate()
