@@ -32,7 +32,7 @@ function OnGUI()
 }
 function Update()
 {
-
+setCurrentGear();
 RotateWheels();
 SteelWheels();
 }
@@ -60,6 +60,7 @@ function setCurrentGear()
 			break;
 		 }
 	 }
+	 GearSound();
 }
 function GearSound()
 { 
@@ -77,7 +78,7 @@ function GearSound()
 			tempMaxSpeed=gearSpeed[currentGear];
 			break;
 	}
-	currentPitch=(((currentSpeed-tempMinSpeed)/(tempMaxSpeed-tempMinSpeed))+1);
+	currentPitch=(((currentSpeed-tempMinSpeed)/(tempMaxSpeed-tempMinSpeed))+0.8);
 	audio.pitch = currentSpeed/maxSpeed+1;
 }
 function FixedUpdate()
