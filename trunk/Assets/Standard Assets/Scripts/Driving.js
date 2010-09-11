@@ -3,8 +3,8 @@ var wheelColliderFrontRight:WheelCollider;
 var wheelColliderBackLeft:WheelCollider;
 var wheelColliderBackRight:WheelCollider;
 var maxTorque=150.0;
-var maxBreakTorque=500.0;
-var fullBreakTorque=5000.0;
+var maxBrakeTorque=500.0;
+var fullBrakeTorque=5000.0;
 var maxSteerAngle=30.0;
 var steerStep:float=1.0;
 var guiSpeed:GUIText;
@@ -20,14 +20,15 @@ var gearSpeed:int[];
 var maxSpeed:float=200.0;
 var maxBackwardSpeed:float=40.0;
 var currentSpeed:float=0.0;
-
+var brakeSound:AudioClip;
 var x:int;
 var y:int;
 var z:int;
-private var currentGear:int;
+private var currentGear:int; 
 private var oldForwardFriction:float;
 private var oldSidewaysFriction:float;
-
+private var brakeAudioSource:AudioSource;
+private var isPayingBrakeSound:boolean=false;
 var slideForwardFriction:float;
 var slideSidewaysFriction:float;
 
@@ -36,7 +37,32 @@ function Start()
 	rigidbody.centerOfMass = Vector3 (x, y, z);
     oldForwardFriction=wheelColliderFrontRight.forwardFriction.stiffness;
     oldSidewaysFriction=wheelColliderFrontRight.sidewaysFriction.stiffness;
+	brakeAudioSource=gameObject.AddComponent(AudioSource);
+	brakeAudioSource.clip=brakeSound;
+	brakeAudioSource.loop=true;
+	brakeAudioSource.volume=0.7;
+	brakeAudioSource.volume=0.7;
+}
+function SetBrakeEffects(PlayEffects:boolean)
+{
+	if(PlayEffects)
+	{
+		if(!isPayingBrakeSound)
+		{
+			isPayingBrakeSound=true;
+			brakeAudioSource.Play();
+			GameObject.Find("DustBackLeft").particleEmitter.emit=true;
+			GameObject.Find("DustBackRight").particleEmitter.emit=true;
+		}
+	}else
+	{
 
+			isPayingBrakeSound=false;
+			brakeAudioSource.Stop();
+			GameObject.Find("DustBackLeft").particleEmitter.emit=false;
+			GameObject.Find("DustBackRight").particleEmitter.emit=false;
+		
+	}
 }
 function SetFriction(ForwardFriction:float,SidewaysFriction:float)
 {
@@ -71,18 +97,21 @@ function FullBraking()
 {
 	if(Input.GetKey("space"))
 	{
-		wheelColliderBackLeft.brakeTorque=fullBreakTorque;
-		wheelColliderBackRight.brakeTorque=fullBreakTorque;
+		wheelColliderBackLeft.brakeTorque=fullBrakeTorque;
+		wheelColliderBackRight.brakeTorque=fullBrakeTorque;
 		
 		if((Mathf.Abs(rigidbody.velocity.z)>1)||(Mathf.Abs(rigidbody.velocity.x)>1))
 		{
+			SetBrakeEffects(true);
 			SetFriction(slideForwardFriction,slideSidewaysFriction);
 		}else
 		{
+			SetBrakeEffects(false);
 			SetFriction(oldForwardFriction,oldSidewaysFriction);
 		}
 	}else
 	{
+		SetBrakeEffects(false);
 		SetFriction(oldForwardFriction,oldSidewaysFriction);
 		wheelColliderBackLeft.brakeTorque=0;
 		wheelColliderBackRight.brakeTorque=0;
@@ -138,14 +167,14 @@ function FixedUpdate()
 FullBraking();
 	currentSpeed=(Mathf.PI*2*wheelColliderFrontLeft.radius)*wheelColliderFrontLeft.rpm*60/1000;
 	currentSpeed=Mathf.Round(currentSpeed);
-	isBreaking=((currentSpeed>0&&Input.GetAxis("Vertical")<0) || (currentSpeed<0&&Input.GetAxis("Vertical")>0));
+	isBraking=((currentSpeed>0&&Input.GetAxis("Vertical")<0) || (currentSpeed<0&&Input.GetAxis("Vertical")>0));
 
 	
 	guiSpeed.material.color=Color.green;
 
 
 
-	if(!isBreaking)
+	if(!isBraking)
 	{
 		wheelColliderFrontLeft.brakeTorque=0;
 		wheelColliderFrontRight.brakeTorque=0;
@@ -162,8 +191,8 @@ FullBraking();
 	}
 	else
 	{
-		wheelColliderFrontLeft.brakeTorque=maxBreakTorque;
-		wheelColliderFrontRight.brakeTorque=maxBreakTorque;
+		wheelColliderFrontLeft.brakeTorque=maxBrakeTorque;
+		wheelColliderFrontRight.brakeTorque=maxBrakeTorque;
 		wheelColliderFrontLeft.motorTorque=0;
 		wheelColliderFrontRight.motorTorque=0;
 	}
